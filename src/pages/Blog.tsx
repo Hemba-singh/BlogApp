@@ -61,6 +61,28 @@ export function Blog() {
       </div>
 
       <div className="mt-6 space-y-6">
+         {posts.map((post) => (
+          <div key={post.id} className="bg-white shadow rounded-lg p-6">
+            <h2 className="text-xl font-semibold text-gray-900">{post.title}</h2>
+            {post.mediaUrl && post.mediaType && (
+              <div className="mt-4">
+                {post.mediaType.startsWith('image/') ? (
+                   <img src={post.mediaUrl} alt={post.title} className="w-full h-auto rounded" />
+                ) : (
+                  <video controls className="w-full h-auto rounded">
+                    <source src={post.mediaUrl} type={post.mediaType} />
+                      Your browser does not support the video tag.
+                  </video>
+                )}
+              </div>
+         )}
+        <p className="mt-2 text-gray-600">{post.content}</p>
+        <p className="mt-4 text-sm text-gray-500">Posted by {post.author}</p>
+      </div>
+     ))}
+   </div>
+
+      <div className="mt-6 space-y-6">
         {posts.map((post) => (
           <div key={post.id} className="bg-white shadow rounded-lg p-6">
             <h2 className="text-xl font-semibold text-gray-900">{post.title}</h2>
