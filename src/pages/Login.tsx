@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
+const logo = '/public/logo.png'; // Replace with your actual logo path
+
+
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,9 +32,10 @@ export function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
-        <div>
+        <div className="text-center">
+          <img src={logo} alt="Logo" className="mx-auto h-30 w-auto"/>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            {isRegistering ? 'Register' : 'Sign in to your account'}
+            {isRegistering ? 'Register' : 'Sign in'}
           </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
