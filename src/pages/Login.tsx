@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-const logo = '/public/logo.png'; // Replace with your actual logo path
+const logo = '/src/pages/logo.png'; // Replace with your actual logo path
 
 
 export function Login() {
