@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
-const logo = '/src/pages/logo.png'; // Replace with your actual logo path
-
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -33,7 +31,7 @@ export function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <img src={logo} alt="Logo" className="mx-auto h-30 w-auto"/>
+          <img src="/src/pages/logo.png" alt="Manitombi" className="mx-auto h-30 w-auto"/>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             {isRegistering ? 'Register' : 'Sign in'}
           </h2>
