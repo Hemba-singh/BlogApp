@@ -19,23 +19,28 @@ export function Blog() {
   const { isAdmin, logout } = useAuth();
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
+ useEffect(() => {
+  const fetchPosts = async () => {
+    try {
       const q = query(collection(db, 'posts'), orderBy('createdAt', 'desc'));
       const snapshot = await getDocs(q);
       const posts = snapshot.docs.map(doc => ({
         id: doc.id,
-        ...doc.data()
-      } as BlogPost));
+        ...doc.data(),
+        createdAt: doc.data().createdAt?.toDate() ?? new Date(),
+      }) as BlogPost);
       setPosts(posts);
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    } finally {
       setLoading(false);
-    };
-
-    fetchPosts();
-  }, []);
+    }
+  };
+  fetchPosts();
+}, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className='text-center'>Loading...</div>;
   }
 
   return (
@@ -78,20 +83,10 @@ export function Blog() {
               </div>
          )}
         <p className="mt-2 text-gray-600">{post.content}</p>
-        <p className="mt-4 text-sm text-gray-500">Posted by {post.author}</p>
+        <p className="mt-4 text-sm text-gray-500">Posted by admin</p>
       </div>
      ))}
    </div>
-
-      <div className="mt-6 space-y-6">
-        {posts.map((post) => (
-          <div key={post.id} className="bg-white shadow rounded-lg p-6">
-            <h2 className="text-xl font-semibold text-gray-900">{post.title}</h2>
-            <p className="mt-2 text-gray-600">{post.content}</p>
-            <p className="mt-4 text-sm text-gray-500">Posted by {post.author}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+ </div>
   );
 }

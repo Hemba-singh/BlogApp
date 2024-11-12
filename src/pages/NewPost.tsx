@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { collection, addDoc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../lib/firebase';
 import { useAuth } from '../contexts/AuthContext';
@@ -26,16 +26,17 @@ export function NewPost() {
         title,
         content,
         author: user?.email,
-        createdAt: new Date()
+        createdAt: serverTimestamp()
       });
 
       if (file) {
-        const fileRef =ref(storage, 'posts/${posterRef.id}/${file.name}');
+        const fileRef = ref(storage, 'posts/${postRef.id}/${file.name}');
         await uploadBytes(fileRef, file);
         const fileURL = await getDownloadURL(fileRef);
         
         // Update the post with the file URL
-        await updateDoc(postRef, { media: fileURL });
+        await updateDoc(postRef, { mediaUrl: fileURL,
+          mediaType: file.type });
       }
 
       navigate('/');
