@@ -5,6 +5,7 @@ import { AdminRoute } from './components/AdminRoute';
 import { Login } from './pages/Login';
 import { Blog } from './pages/Blog';
 import { NewPost } from './pages/NewPost';
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
