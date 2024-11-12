@@ -31,8 +31,13 @@ export function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <img src="/src/pages/logo.png" alt="Logo" className="mx-auto h-25 w-auto"/>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+           <div className="text-5xl font-extrabold space-y-10">
+             <span className="mt-8 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+               Manitombi
+               </span>
+              </div>
+              <div className="h-20"></div>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-indigo-600">
             {isRegistering ? 'Register' : 'Sign in'}
           </h2>
         </div>
@@ -40,22 +45,29 @@ export function Login() {
           {error && <div className="text-red-500 text-center">{error}</div>}
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
+              <label htmlFor="email-address" className="block text-sm/6 font-medium text-gray-900">Email address</label>
               <input
+                id="email-address"
+                name="email"
                 type="email"
                 required
-                className="appearance-auto rounded-lg relative block w-full px-4 py-2 border border-gray-500 placeholder-gray-800 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                autoComplete="email"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+                
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="h-6"></div>
             <div>
+              <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">Password</label>
               <input
+                id="password"
+                name="password"
                 type="password"
                 required
-                className="appearance-auto rounded-lg relative block w-full px-4 py-2 border border-gray-500 placeholder-gray-800 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
+              
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
