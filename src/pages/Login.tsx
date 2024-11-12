@@ -36,16 +36,16 @@ export function Login() {
                Manitombi
                </span>
               </div>
-              <div className="h-20"></div>
+              <div className="h-32"></div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-indigo-600">
             {isRegistering ? 'Register' : 'Sign in'}
           </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && <div className="text-red-500 text-center">{error}</div>}
-          <div className="rounded-md shadow-sm -space-y-px">
+          <div className="items-center rounded-md shadow-sm -space-y-px">
             <div>
-              <label htmlFor="email-address" className="block text-sm/6 font-medium text-gray-900">Email address</label>
+              <label htmlFor="email-address" className="block text-sm font-medium text-gray-900">Email address</label>
               <input
                 id="email-address"
                 name="email"
@@ -60,7 +60,7 @@ export function Login() {
             </div>
             <div className="h-6"></div>
             <div>
-              <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">Password</label>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-900">Password</label>
               <input
                 id="password"
                 name="password"
