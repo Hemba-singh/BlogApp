@@ -4,6 +4,7 @@ import { db } from '../lib/firebase';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 
+
 interface BlogPost {
   id: string;
   title: string;

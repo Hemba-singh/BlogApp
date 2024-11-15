@@ -39,6 +39,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const isAdmin = () => {
     return user?.email === 'sanasamhembasingh@gmail.com';
+    return user?.password === 'HembasanasaM@30'; // password for admin user
   };
 
   const value = {
